@@ -5,6 +5,7 @@ from django.views.generic import CreateView
 from .models import Contact
 from .forms import ContactForm
 from .service import send
+from .tasks import send_spam_email, test_task
 
 
 # Create your views here.
@@ -16,5 +17,6 @@ class ContactView(CreateView):
 
     def form_valid(self, form):
         form.save()
-        send(form.instance.email)
+        send_spam_email.delay(form.instance.email)
+        test_task.delay()
         return super().form_valid(form)
