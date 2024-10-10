@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from django.views.generics import CreateView
+from django.views.generic import CreateView
 
 # Core imports
 from .models import Contact
 from .forms import ContactForm
+from .service import send
 
 
 # Create your views here.
