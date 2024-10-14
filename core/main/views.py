@@ -16,6 +16,7 @@ class ContactView(CreateView):
     template_name = "main/contact.html"
 
     def form_valid(self, form):
+        print(f"Email: {form.instance.email}")  # Отладка email
         form.save()
         send_spam_email.delay(form.instance.email)
         return super().form_valid(form)
