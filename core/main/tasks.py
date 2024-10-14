@@ -9,5 +9,5 @@ def send_spam_email(user_email):
   send(user_email)
 
 
-@app.task
-def send_
+# @app.task
+# def send_
